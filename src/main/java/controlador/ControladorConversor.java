@@ -25,7 +25,12 @@ public class ControladorConversor implements ActionListener{
         this.vista.botonPeseta.addActionListener(this);
         this.vista.botonDolar.addActionListener(this);
     }
-    
+    public void iniciarVista(){
+        this.vista.setVisible(true);
+        this.vista.setSize(600,400);
+        this.vista.setLocationRelativeTo(null);
+        this.vista.pack();
+    }
 
     @Override
     public void actionPerformed(ActionEvent e) {
@@ -37,10 +42,15 @@ public class ControladorConversor implements ActionListener{
                     modelo.setCantidad(resultado);
                     modelo.setMoneda(166.3860);
                     modelo.convertirMoneda();
-                    vista.resultadoMostrado.setText(resultado);   
+                    vista.resultadoMostrado.setText(""+resultado);   
                 }
             }else if(vista.botonPeseta == ev){
-                
+                    if(!"".equalsIgnoreCase(vista.entrarDato.getText())){
+                    modelo.setCantidad(resultado);
+                    modelo.setMoneda(166.3860);
+                    modelo.convertirMoneda();
+                    vista.resultadoMostrado.setText(""+resultado);   
+                }
             }
         } catch (NumberFormatException ex) {
             vista.resultadoMostrado.setText("Introduce un número por favor.");
